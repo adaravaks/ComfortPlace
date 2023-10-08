@@ -1,0 +1,28 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-white">Страница с регистрацией</h1>
+{% if request.user.is_authenticated %}
+    <p class="text-white">Ты уже зарегистрирован и авторизован, разве нет?</p>
+{% else %}
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p><label for="{{ field.id_for_label }}" class="form-label text-white">{{field.label}}: </label>{{ field }}</p>
+            <div class="form-error text-bg-danger">{{ field.errors }}</div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+    </form>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+             {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}
+{% endblock %}
