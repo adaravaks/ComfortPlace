@@ -1,0 +1,7 @@
+{% autoescape off %}
+Это ты {{ user }}?
+
+Вот твоя ссылка на сто вирусов, тридцать майнеров, семь порч и два родовых проклятия:
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
