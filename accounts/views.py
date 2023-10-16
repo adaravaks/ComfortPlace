@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, logout
 from django.contrib.auth.views import LoginView
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
@@ -42,7 +42,7 @@ def activateEmail(request, user, to_email):
         'token': account_activation_token.make_token(user),
         'protocol': 'https' if request.is_secure() else 'http'
     })
-    email = EmailMessage(mail_subject, message, to=[to_email])
+    email = EmailMessage(mail_subject, message, to=[to_email], from_email='no-reply<no-reply@comfortplace.com>')
     if email.send():
         messages.success(request, f'Ах ты ёбаный {user}, быстро пиздуй на свой {to_email} и подтверждай свою поганую регистрацию.', extra_tags='alert-success alert')
     else:
@@ -78,10 +78,6 @@ class LoginUser(DataMixin, LoginView):
 
     def get_success_url(self):
         return reverse_lazy('index')
-
-
-def logout(request):
-    pass
 
 
 def profile(request):
