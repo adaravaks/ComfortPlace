@@ -11,12 +11,27 @@
     <script src="https://kit.fontawesome.com/488146a138.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{% static 'accounts/css/base.css' %}"/>
 </head>
 <body>
     <nav class="header">
         <label for="header-check" class="menu-btn"><i class="fa-solid fa-bars" style="color: #003b3b;"></i></label>
-        <label for="" class="logo">ComfortPlace</label>
+        <a href='{% url 'index' %}' class="logo">
+            <svg class="logo-cat-svg" width="60" height="60" viewBox="0 0 793 909" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M426 240C443.5 270.5 474 268 489.5 259.5M588 281C598 301 627 307 644.5 293" stroke="#2D8693"
+                    stroke-width="35" stroke-linecap="round"></path>
+                <path d="M439.818 362.5C710.318 528.5 760.318 140 731.318 97.5001M647.818 130C657.818 118 709.818 85.9996 730.818 97.0001M488.318 85.4996C556.318 77 626.318 109.5 647.318 130M436.318 10C451.318 10 479.318 52 487.818 85M361.318 129C387.818 57.5 419.318 21.5 435.818 10.5M43.8456 675C-100.645 292 257.851 112 361.846 130.5M620.352 820C349.352 1006 114.352 821.5 44.3516 676M752.852 364C846.852 585 691.352 772.5 621.352 819.5"
+                    stroke="#2D8693" stroke-width="35" stroke-linecap="round"></path>
+            </svg>
+            <span class="logo-text">ComfortPlace</span>
+        </a>
         <input type="checkbox" id="header-check">
         <ul>
             <li><a href="{% url 'index' %}">Главная</a></li>

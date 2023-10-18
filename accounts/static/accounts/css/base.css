@@ -59,9 +59,32 @@ body {
     color: #005959;
     font-weight: bold;
     font-size: 35px;
-    line-height: 80px;
-    padding: 0 100px;
-    transition: all .3s linear;
+    transition: all .7s linear;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin: 6px;
+    padding: 4px;
+}
+
+.logo:hover {
+    transition: all 0.3s linear;
+    color: white;
+    background-color: #008686;
+    border-radius: 10px;
+}
+
+.logo-cat-svg {
+    margin-right: 5px;
+}
+
+.logo-cat-svg path {
+    transition: all .5s linear;
+}
+
+.logo:hover .logo-cat-svg path {
+    stroke: white;
+    transition: all .5s linear;
 }
 
 .menu-btn {
@@ -94,7 +117,6 @@ body {
     }
 
     .logo {
-        padding-left: 50px;
         font-size: 26px;
         transition: all 0.7s linear;
     }
@@ -141,15 +163,12 @@ body {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .logo {
-        font-size: 20px;
-        padding-right: 50px;
+        padding: 4px;
     }
-}
 
-@media screen and (max-width: 300px) {
-    .logo {
-        padding: 20px;
+    .logo-text {
+        display: none;
     }
 }
