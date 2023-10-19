@@ -1,0 +1,18 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}
+Создать тему
+{% endblock %}
+
+{% block content %}
+<h1 class="text-white">Создать тему</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.header }} <br>
+    {{ form.text }} <br>
+    {{ form.media }} <br>
+    {{ form.captcha }}
+    <button type="submit" class="btn btn-success mt-5">Создать</button>
+    <div><p class="text-white">{{ error }}</p></div>
+</form>
+{% endblock %}

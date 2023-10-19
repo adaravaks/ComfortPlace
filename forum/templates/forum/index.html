@@ -1,0 +1,46 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="page-header-container">
+    <h1 class="headers-text-style-one">Темы</h1>
+    <h2 class="headers-text-style-one"><a href="{% url 'new-theme' %}" class="header-button"><i class="fa-solid fa-plus"></i> Добавить</a></h2>
+</div>
+{% if themes %}
+{% for theme in themes %}
+    <div class="outer-theme-container">
+        <div class="info-theme-container">
+            <p class="theme-info">Автор: <a href="#" class="theme-author-button">{{theme.author_id}}</a></p>
+            <p class="theme-info">Дата создания темы: {{ theme.time_create }}</p>
+        </div>
+        <div class="main-theme-container">
+            {% if theme.media %}
+                <img src="{{ theme.media.url }}" data-fancybox alt="Медиа-вложение темы" class="theme-image">
+                <div class="theme-text-container">
+            {% else %}
+                <div class="theme-text-container pictureless-theme">
+            {% endif %}
+                    <h3 class="headers-text-style-two">{{ theme.header }}</h3>
+                    <p class="plain-text-style-two">{{ theme.text|truncatewords:100 }}</p>
+                    <a href="{{ theme.get_absolute_url }}" class="into-theme-button">В тему</a>
+                </div>
+        </div>
+    </div>
+{% endfor %}
+{% else %}
+<div class="alert-danger alert mt-2">
+    <p>Тем нет</p>
+</div>
+{% endif %}
+{% endblock %}

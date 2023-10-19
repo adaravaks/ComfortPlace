@@ -1,0 +1,76 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}
+Тема: {{ main_theme.header|truncatewords:10 }}
+{% endblock %}
+
+{% block content %}
+<div class="page-header-container">
+    <h2 class="headers-text-style-one"><a href="{% url 'index' %}" class="header-button"><i class="fa-solid fa-arrow-left"></i> Назад</a></h2>
+    <h1 class="headers-text-style-one">Тема</h1>
+</div>
+{% if main_theme %}
+    <div class="outer-theme-container">
+        <div class="info-theme-container">
+            <p class="theme-info">Автор: <a href="#" class="theme-author-button">{{main_theme.author_id}}</a></p>
+            <p class="theme-info">Создано {{ main_theme.time_create }}</p>
+        </div>
+        <div class="main-theme-container">
+            {% if main_theme.media %}
+                <img src="{{ main_theme.media.url }}" data-fancybox alt="Медиа-вложение темы" class="theme-image">
+                <div class="theme-text-container">
+            {% else %}
+                <div class="theme-text-container pictureless-theme">
+            {% endif %}
+                    <h3 class="headers-text-style-two">{{ main_theme.header }}</h3>
+                    <p class="plain-text-style-two">{{ main_theme.text }}</p>
+                </div>
+        </div>
+    </div>
+
+    {% if posts_related %}
+    {% for post in posts_related %}
+    <div class="outer-post-container">
+        <div class="info-post-container">
+            <p class="post-info">Автор: {% if post.author_id %} <a href="#" class="post-author-button">{{post.author_id}}</a> {% else %} Аноним {% endif %}</p>
+            <p class="post-info">Отправлено {{ post.create_time }}</p>
+        </div>
+        <div class="main-post-container">
+            {% if post.post_picture %}
+                <img src="{{ post.post_picture.url }}" data-fancybox alt="Медиа-вложение темы" class="post-image">
+                <div class="post-text-container">
+            {% else %}
+                <div class="post-text-container pictureless-post">
+            {% endif %}
+                    <p class="plain-text-style-two">{{ post.text }}</p>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <div class="no-posts-alert-container">
+        <p class="no-posts-alert-message">Тему ещё никто не комментировал. Нет ничего плохого в том, чтобы стать первым 😉</p>
+    </div>
+    {% endif %}
+{% else %}
+<div class="alert-danger alert mt-2">
+    <p>Такой темы нет</p>
+</div>
+{% endif %}
+
+<h1 class="text-white">Написать в тему</h1>
+{% if request.user.is_authenticated %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.theme }} <br>
+        {{ form.text }} <br>
+        {{ form.post_picture }} <br>
+        {{ form.captcha }}
+        <p class="text-danger">{{ error }}</p>
+        <button type="submit" class="btn btn-success mt-5">Запостить</button>
+    </form>
+{% else %}
+    <p class="text-white">Комментировать тему могут только авторизованные ползователи</p>  <!-- TODO: Unwanted behaviour -->
+{% endif %}
+{% endblock %}

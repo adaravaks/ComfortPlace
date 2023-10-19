@@ -1,0 +1,90 @@
+.outer-theme-container {
+    background-color: rgb(45, 134, 147);
+    border-radius: 20px;
+}
+
+.info-theme-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.theme-info {
+    color: white;
+    margin: 5px 25px 5px 25px;
+    transition: all 0.5s linear;
+}
+
+.main-theme-container {
+    background-color: white;
+    display: flex;
+    margin-bottom: 45px;
+    border-radius: 0 0 20px 20px;
+}
+
+.theme-text-container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.theme-image {
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    margin: 15px;
+    border: solid 4px rgba(45, 134, 147, 0);
+    transition: all 0.7s linear;
+}
+
+.theme-image:hover {
+    border: solid 4px rgba(45, 134, 147, 1);
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.pictureless-theme {
+    margin-left: 240px;
+}
+
+.into-theme-button {
+    align-self: flex-end;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    margin-right: 20px;
+    margin-top: auto;
+    color: rgb(45, 134, 147);
+    background-color: white;
+    border-radius: 10px;
+    max-width: 90px;
+    text-align: center;
+    transition: all 0.7s linear;
+}
+
+.into-theme-button:hover {
+    transition: all 0.3s linear;
+    color: white;
+    background-color: rgb(45, 134, 147);
+}
+
+.theme-author-button {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 3px;
+    margin-bottom: 5px;
+    color: white;
+    background-color: rgb(45, 134, 147);
+    border-radius: 10px;
+    max-width: 90px;
+    text-align: center;
+    transition: all 0.7s linear;
+}
+
+.theme-author-button:hover {
+    transition: all 0.3s linear;
+    color: rgb(45, 134, 147);
+    background-color: white;
+}
