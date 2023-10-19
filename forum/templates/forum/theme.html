@@ -6,8 +6,8 @@
 
 {% block content %}
 <div class="page-header-container">
-    <h2 class="headers-text-style-one"><a href="{% url 'index' %}" class="header-button"><i class="fa-solid fa-arrow-left"></i> Назад</a></h2>
-    <h1 class="headers-text-style-one">Тема</h1>
+    <h1 class="header-white"><a href="{% url 'index' %}" class="header-button"><i class="fa-solid fa-arrow-left"></i> Назад</a></h1>
+    <h1 class="header-white">Тема</h1>
 </div>
 {% if main_theme %}
     <div class="outer-theme-container">
@@ -22,8 +22,8 @@
             {% else %}
                 <div class="theme-text-container pictureless-theme">
             {% endif %}
-                    <h3 class="headers-text-style-two">{{ main_theme.header }}</h3>
-                    <p class="plain-text-style-two">{{ main_theme.text }}</p>
+                    <h2 class="header-blue">{{ main_theme.header }}</h2>
+                    <p class="text-blue">{{ main_theme.text }}</p>
                 </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
             {% else %}
                 <div class="post-text-container pictureless-post">
             {% endif %}
-                    <p class="plain-text-style-two">{{ post.text }}</p>
+                    <p class="text-blue">{{ post.text }}</p>
                 </div>
         </div>
     </div>

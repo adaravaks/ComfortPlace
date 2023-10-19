@@ -1,4 +1,9 @@
 @media screen and (max-width: 767px) {
+    .outer-theme-container {
+        left: 3%;
+        width: 94%;
+    }
+
     .main-theme-container {
         flex-direction: column;
         align-items: center;

@@ -1,26 +1,28 @@
-.headers-text-style-one {
+.header-white {
     color: white;
     text-shadow: 1px 1px 7px rgb(106, 220, 241);
+    margin: 3px;
 }
 
-.headers-text-style-two {
+.header-blue {
     color: rgb(45, 134, 147);
     text-shadow: 1px 1px 7px rgb(106, 220, 241);
+    margin: 3px;
 }
 
-.plain-text-style-one {
+.text-white {
     color: white;
 }
 
-.plain-text-style-two {
+.text-blue {
     color: rgb(14, 111, 126);
 }
 
 .page-header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 30px 0 30px 0;
     flex-wrap: wrap;
 }
 

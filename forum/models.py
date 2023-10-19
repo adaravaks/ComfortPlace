@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import PROTECT, CASCADE
+from django.db.models import CASCADE, SET_NULL
 from django.urls import reverse
 
 
@@ -9,7 +9,7 @@ class Post(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     parent_theme = models.ForeignKey('Theme', on_delete=CASCADE, blank=True)
-    author = models.ForeignKey('auth.User', to_field='username', on_delete=PROTECT, null=True)
+    author = models.ForeignKey('auth.User', to_field='username', on_delete=SET_NULL, null=True)
 
     def __str__(self):
         return self.text
@@ -28,7 +28,7 @@ class Theme(models.Model):
     text = models.TextField(max_length=5000)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey('auth.User', to_field='username', on_delete=PROTECT, null=True)
+    author = models.ForeignKey('auth.User', to_field='username', on_delete=SET_NULL, null=True)
 
     def __str__(self):
         return self.header

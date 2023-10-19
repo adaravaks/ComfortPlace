@@ -1,3 +1,4 @@
+from django.conf.urls.static import static
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 from djangoProject import settings
@@ -9,4 +10,4 @@ urlpatterns = [
     path('logout', LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('profile', views.profile, name='profile'),
     path('activate/<uidb64>/<token>', views.activate, name='activate')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

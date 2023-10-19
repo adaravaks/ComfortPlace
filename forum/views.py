@@ -42,7 +42,7 @@ def new_theme(request):
     error = ''
     if request.method == 'POST':
         form = ThemeForm(request.POST, request.FILES)
-        author = User.objects.get(pk=request.user.id)
+        author = User.objects.get(pk=request.user.id) if request.user.is_authenticated else None
         form.instance.author = author
         if form.is_valid():
             form.save()
