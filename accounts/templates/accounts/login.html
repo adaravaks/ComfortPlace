@@ -1,7 +1,7 @@
 {% extends 'accounts/base.html' %}
 
 {% block title %}
-Авторизация
+{{ title }}
 {% endblock %}
 
 {% block content %}
@@ -9,14 +9,17 @@
 {% if request.user.is_authenticated %}
     <p class="text-white">Ты уже авторизован, разве нет?</p>
 {% else %}
-    <form action="?" method="post">
+    <form id="form-with-captcha" action="?" method="post">
         {% csrf_token %}
         <div class="form-error text-bg-danger">{{ form.non_field_errors }}</div>
         {% for field in form %}
             <p><label for="{{ field.id_for_label }}" class="form-label text-white">{{field.label}}: </label>{{ field }}</p>
             <div class="form-error text-bg-danger">{{ field.errors }}</div>
         {% endfor %}
-        <button type="submit" class="btn btn-success">Войти</button>
+        <button type="submit" class="g-recaptcha"
+        data-sitekey="{{ captcha_site_key }}"
+        data-callback='onSubmit'
+        data-action='submit'>Войти</button>
     </form>
     {% if messages %}
         <ul class="messages">

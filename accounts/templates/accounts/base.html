@@ -10,6 +10,7 @@
     <title>{% block title %}{% endblock %}</title>
     <script src="https://kit.fontawesome.com/488146a138.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le3DtQoAAAAABp7lP7yLDEDs5XFTP2knl-yGSnk"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
@@ -46,5 +47,10 @@
     </nav>
     <div>{% block content %}{% endblock %}</div>
 <script>Fancybox.bind("[data-fancybox]", {});</script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("form-with-captcha").submit();
+    }
+</script>
 </body>
 </html>

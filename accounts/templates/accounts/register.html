@@ -15,7 +15,10 @@
             <p><label for="{{ field.id_for_label }}" class="form-label text-white">{{field.label}}: </label>{{ field }}</p>
             <div class="form-error text-bg-danger">{{ field.errors }}</div>
         {% endfor %}
-        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+        <button type="submit"class="g-recaptcha"
+        data-sitekey="{{ captcha_site_key }}"
+        data-callback='onSubmit'
+        data-action='submit'>Зарегистрироваться</button>
     </form>
     {% if messages %}
         <ul class="messages">
