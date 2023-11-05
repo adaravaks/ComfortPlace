@@ -5,14 +5,17 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="text-white">Создать тему</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.header }} <br>
-    {{ form.text }} <br>
-    {{ form.media }} <br>
-    {{ form.captcha }}
-    <button type="submit" class="btn btn-success mt-5">Создать</button>
-    <div><p class="text-white">{{ error }}</p></div>
-</form>
+<div class="page-header-container"><h1 class="header-white">Создать тему</h1></div>
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>{{ form.non_field_errors }}</div>
+        {% for field in form %}
+            <p class="form-field"><label for="{{ field.id_for_label }}" class="text-blue">{{field.label}}: </label>{{ field }}</p>
+            <div class="">{{ field.errors }}</div>
+        {% endfor %}
+        <button type="submit" class="g-recaptcha form-submit-btn"
+        data-sitekey="{{ captcha_site_key }}"
+        data-callback='onSubmit'
+        data-action='submit'>Запостить</button>
+    </form>
 {% endblock %}

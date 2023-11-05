@@ -8,7 +8,7 @@ class PostForm(ModelForm):
         fields = ('text', 'post_picture')
         widgets = {
             'text': Textarea(attrs={
-                'class': '',
+                'class': 'form-input',
                 'placeholder': 'Пост'}),
 
             'post_picture':  FileInput(attrs={
@@ -23,11 +23,11 @@ class ThemeForm(ModelForm):
         fields = ('header', 'text', 'media')
         widgets = {
             'header': TextInput(attrs={
-                'class': '',
+                'class': 'form-input',
                 'placeholder': 'Заголовок'}),
 
             'text': Textarea(attrs={
-                'class': '',
+                'class': 'form-input',
                 'placeholder': 'Тема'}),
 
             'media': FileInput(attrs={

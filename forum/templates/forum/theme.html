@@ -59,16 +59,19 @@
 </div>
 {% endif %}
 
-<h1 class="text-white">Написать в тему</h1>
+<div class="page-header-container"><h1 class="header-white">Написать в тему</h1></div>
 {% if request.user.is_authenticated %}
-    <form method="post" enctype="multipart/form-data">
+    <form class="form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.theme }} <br>
-        {{ form.text }} <br>
-        {{ form.post_picture }} <br>
-        {{ form.captcha }}
-        <p class="text-danger">{{ error }}</p>
-        <button type="submit" class="btn btn-success mt-5">Запостить</button>
+        <div>{{ form.non_field_errors }}</div>
+        {% for field in form %}
+            <p class="form-field"><label for="{{ field.id_for_label }}" class="text-blue">{{field.label}}: </label>{{ field }}</p>
+            <div class="">{{ field.errors }}</div>
+        {% endfor %}
+        <button type="submit" class="g-recaptcha form-submit-btn"
+        data-sitekey="{{ captcha_site_key }}"
+        data-callback='onSubmit'
+        data-action='submit'>Запостить</button>
     </form>
 {% else %}
     <p class="text-white">Комментировать тему могут только авторизованные ползователи</p>  <!-- TODO: Unwanted behaviour -->
