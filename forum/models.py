@@ -19,7 +19,7 @@ class Post(models.Model):
         verbose_name_plural = 'Посты'
 
     def get_absolute_url(self):
-        return reverse('theme', kwargs={'theme_id': self.parent_theme})
+        return reverse('theme', kwargs={'theme_id': self.parent_theme.pk})
 
 
 class Theme(models.Model):

@@ -27,11 +27,14 @@
 }
 
 .post-text-container {
+    position: relative;
     margin-top: 15px;
     margin-bottom: 15px;
     display: flex;
     flex-grow: 1;
     flex-direction: column;
+    word-wrap: break-word;
+    max-width: 80%;
 }
 
 .post-image {
@@ -50,7 +53,7 @@
 }
 
 .pictureless-post {
-    margin-left: 160px;
+    margin-left: 18%;
 }
 
 .post-author-button {
