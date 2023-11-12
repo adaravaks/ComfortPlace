@@ -41,6 +41,7 @@
             <li><a href="{% url 'index' %}">Главная</a></li>
             <li><a href="#">Че-нибудь ещё</a></li>
             {% if request.user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">{{ request.user.username }} (профиль)</a></li>
                 <li><a href="{% url 'logout' %}">Выйти</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}">Войти</a></li>

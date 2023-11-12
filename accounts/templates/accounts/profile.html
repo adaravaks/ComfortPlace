@@ -1,0 +1,17 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="page-header-container">
+            <h1 class="header-white">Это профиль {{ username }}. {{ username }} — это вы. Это ваш профиль</h1>
+        </div>
+{% else %}
+    <div class="page-header-container">
+        <h1 class="header-white">Удивительно, но если вы не вошли в профиль, то и страница с профилем будет пуста. Что ещё вы ожидали здесь увидеть?</h1>
+    </div>
+{% endif %}
+{% endblock %}

@@ -82,4 +82,6 @@ class LoginUser(DataMixin, LoginView):
 
 
 def profile(request):
-    pass
+    user = request.user
+    context = {'title': 'Профиль ', 'username': user.username}
+    return render(request, 'accounts/profile.html', context)

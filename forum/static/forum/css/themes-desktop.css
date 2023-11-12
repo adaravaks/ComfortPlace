@@ -28,12 +28,14 @@
 }
 
 .theme-text-container {
+    position: relative;
     margin-top: 15px;
     margin-bottom: 15px;
     display: flex;
     flex-grow: 1;
     flex-direction: column;
     word-wrap: break-word;
+    max-width: 80%;
 }
 
 .theme-image {
@@ -52,7 +54,7 @@
 }
 
 .pictureless-theme {
-    margin-left: 240px;
+    margin-left: 19%;
 }
 
 .into-theme-button {
